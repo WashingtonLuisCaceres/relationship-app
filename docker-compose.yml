@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  mica-frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: mica-app
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    networks:
+      - mica-network
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+networks:
+  mica-network:
+    driver: bridge
