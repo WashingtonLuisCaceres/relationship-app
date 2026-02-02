@@ -119,10 +119,47 @@ cd frontend && node scripts/generate-icons.cjs
 #### Pendientes para V1.5
 
 - [ ] Testing en iOS real
-- [ ] Deploy a mini PC
 - [ ] Configurar GitHub Actions
 - [ ] Agregar más frases personalizadas
 - [ ] Galería de fotos (siguiente fase)
+
+---
+
+### 2026-02-02 | Configuración Deploy Producción
+
+**Estado:** Listo para deploy
+
+#### Cambios realizados
+
+- Configurado `base: '/mica-app/'` en vite.config.ts
+- Actualizado manifest.json con scope y start_url `/mica-app/`
+- Service worker actualizado para paths con prefijo
+- Creado `data/caddy-config.md` con instrucciones para Caddy
+- Puerto cambiado a **3001** (evitar conflicto con servicios existentes)
+
+#### URL de producción
+
+```
+https://wcaceres.tplinkdns.com/mica-app/
+```
+
+#### Pasos para deploy en mini PC
+
+```bash
+# 1. Clonar repo
+cd /data
+git clone <repo-url> relationship-app
+cd relationship-app
+
+# 2. Levantar con Docker
+docker-compose up -d --build
+
+# 3. Configurar Caddy (ver data/caddy-config.md)
+# Agregar handle_path /mica-app/* al Caddyfile
+
+# 4. Recargar Caddy
+sudo systemctl reload caddy
+```
 
 ---
 

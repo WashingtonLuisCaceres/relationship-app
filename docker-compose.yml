@@ -8,7 +8,7 @@ services:
     container_name: mica-app
     restart: unless-stopped
     ports:
-      - "3000:80"
+      - "3001:80"
     networks:
       - mica-network
     labels:
