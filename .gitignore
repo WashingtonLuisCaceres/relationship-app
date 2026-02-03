@@ -1,6 +1,9 @@
 # Claude Code
 .claude/
 
+# Internal docs (local only)
+data/
+
 # Dependencies
 node_modules/
 
